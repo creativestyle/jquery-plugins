@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../assets/github.css">
+</head>
+<body>
+<h1>$.ajaxToggle</h1>
+<p><em>jQuery plugin for creating a toggle button that does ajax calls</em></p>
+<p>Requires <strong>jQuery</strong>.</p>
+<h2>Usage</h2>
+<p>Basic usage is:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">$</span>(<span class="st">&#39;.btn-toggle&#39;</span>).<span class="fu">ajaxToggle</span>({
+    <span class="dt">states</span>: {
+        <span class="dt">on</span>: {
+            <span class="dt">cls</span>: <span class="st">&#39;on-class&#39;</span>,
+            <span class="dt">content</span>: <span class="st">&#39;ON&#39;</span>,
+            <span class="dt">action</span>: <span class="st">&#39;http://action-for-on.com&#39;</span>
+        },
+        <span class="dt">off</span>: {
+            <span class="dt">cls</span>: <span class="st">&#39;off-class&#39;</span>,
+            <span class="dt">content</span>: <span class="st">&#39;OFF&#39;</span>,
+            <span class="dt">action</span>: <span class="kw">null</span>
+        },
+        <span class="dt">loading</span>: {
+            <span class="dt">cls</span>: <span class="st">&#39;loading-class&#39;</span>,
+            <span class="dt">content</span>: <span class="st">&#39;Loading...&#39;</span>
+        }
+    }
+});</code></pre>
+<h2>Parameters</h2>
+<h3>States</h3>
+<p><strong>Default</strong>:<br /><code>javascript states: {     on: {         cls: 'toggle-on',         content: null,         action: null     },     off: {         cls: 'toggle-off',         content: null,         action: null     },     loading: {         cls: 'toggle-loading',         content: null     } }</code></p>
+<p>For each state:<br />* <code>cls</code> is the class that will be added/removed from the element<br />* <code>content</code> is the HTML that will be set on the element<br />* <code>action</code> url of the action to be performed; N/A to <code>loading</code></p>
+<p>Actions can also be set using <code>data-on</code> and <code>data-off</code> attributes.</p>
+<h3>initialState</h3>
+<p><strong>Default</strong>: <code>'off'</code></p>
+<p>Specified the initial state on page load. The elements class/content will<br />be adjusted upon initialization.</p>
+<p>Can be also set using <code>data-state</code> attribute.</p>
+<h3>optimistic</h3>
+<p><strong>Default</strong>: <code>false</code></p>
+<p>If set to true then the element will visually change immediately as if the<br />action succeeded and the request will run in background.</p>
+<p>The <code>loading</code> state won't be used if this is set to <code>true</code>.</p>
+</body>
+</html>

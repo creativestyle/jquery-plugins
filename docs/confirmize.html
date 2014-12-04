@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../assets/github.css">
+</head>
+<body>
+<h1>$.confirmize</h1>
+<p><em>jQuery plugin that displays confirmation box for an action link or when<br />submitting a form</em></p>
+<p>Requires <strong>jQuery</strong> and <strong>bootbox</strong>. Works best with <strong>bootstrap</strong>.</p>
+<h2>Usage</h2>
+<p>Basic usage is:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">$</span>(<span class="st">&#39;.your-class&#39;</span>).<span class="fu">confirmize</span>({
+    <span class="dt">title</span>: <span class="st">&#39;Title&#39;</span>,
+    <span class="dt">message</span>: <span class="st">&#39;Proceed?&#39;</span>
+});</code></pre>
+<p>The settings object and all params are optional.</p>
+<h2>Parameters</h2>
+<p>All parameters can be specified by using (in this order):</p>
+<ul>
+<li>data attribute - ex. <code>data-title=&quot;your title&quot;</code><br /></li>
+<li>jquery data() - ex. <code>$(element).data('title', 'your title')</code><br /></li>
+<li>by specifing it in the object passed to plugin initializer</li>
+</ul>
+<h3>title</h3>
+<p><strong>Default:</strong> <code>'&lt;i class=&quot;fa fa-exclamation-triangle text-danger&quot;&gt;&lt;/i&gt; Confirm Action'</code></p>
+<p>Can be also specified in the title attribute on the element.</p>
+<h3>message</h3>
+<p><strong>Default:</strong> <code>'Are you sure?'</code></p>
+<h3>href</h3>
+<p>This parameter must be specified unless you're using a form.<br />Can be also specified in the href attribute on the element.</p>
+</body>
+</html>

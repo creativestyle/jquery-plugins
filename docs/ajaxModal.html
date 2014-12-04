@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../assets/github.css">
+</head>
+<body>
+<h1>$.ajaxModal</h1>
+<p><em>jQuery plugin for displaying partial views in popup using AJAX</em></p>
+<p>It (kind of) simulates an iframe allowing you to easily navigate using links and<br />submit forms.</p>
+<p>Requires <strong>jQuery</strong>, <strong>bootstrap</strong> and <strong>bootstrap's modal script</strong>.</p>
+<h2>Usage</h2>
+<p>You can use it by calling the extension on the set of matched anchors:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">$</span>(<span class="st">&#39;a.btn-modal&#39;</span>).<span class="fu">ajaxModal</span>({ <span class="co">/* custom options */</span> });</code></pre>
+<p>In which case the initial url is taken from <code>href</code> or <code>data-href</code> attribute and<br />the tile is taken from <code>title</code> or <code>data-title</code> url.</p>
+<h2>Alternative usage</h2>
+<p>Alternatively you can create an instance of <code>AjaxModal</code> class and use it's<br />methods.</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> modal = <span class="kw">new</span> <span class="fu">AjaxModal</span>({ <span class="co">/* custom options */</span> });
+
+<span class="ot">modal</span>.<span class="fu">show</span>(url, title);</code></pre>
+<h3>AjaxModal::show(url, title)</h3>
+<p>The modal is initialized, shown and the <code>url</code> is loaded.</p>
+<p>Parameter <code>title</code> is optional.</p>
+<h3>AjaxModal::loadUrl(url, postData)</h3>
+<p>The modal has to be initialized and shown before you call this method.</p>
+<p>It loads another url into the modal. If <code>postData</code> is set then the request<br />is made using <strong>POST</strong>. The <code>postData</code> can be a plain object or an array<br />following <a href="http://api.jquery.com/serializeArray/"><code>$.serialize</code></a> convention.</p>
+<h3>AjaxModal::close()</h3>
+<p>Closes the modal.</p>
+<h3>AjaxModal::setContent(content)</h3>
+<p>Sets the content of the modal.</p>
+<h2>Options</h2>
+<h3>params</h3>
+<p><strong>Default:</strong> <code>[]</code></p>
+<p>The parameters are optional. You can pass a plain object or array containing<br />additional parameters to be passed with every AJAX call. The parameters will be<br />passed using the same method that is used for the call. So they will be passed<br />using <strong>GET</strong> for normal requests and <strong>POST</strong> for form submits.</p>
+<p>If you use an array it has to follow the<br /><a href="http://api.jquery.com/serializeArray/"><code>$.serialize</code></a> convention.</p>
+<h3>spinner</h3>
+<p><strong>Default:</strong> <code>null</code></p>
+<p>HTML used for the spinner. It is inserted directly into</p>
+<h3>onViewFetched</h3>
+<p><strong>Default:</strong> <code>null</code></p>
+<p>You can provide a callback that will be executed immediately after the data<br />is fetched.</p>
+<p>The callback will be executed in <code>AjaxModal</code> object's context.</p>
+<p>It's useful for executing other plugins like datepicker...</p>
+<h3>onError</h3>
+<p><strong>Default:</strong> <code>null</code></p>
+<p>The callback which will be executed if ajax call returns with an error.</p>
+<p>It will be attached to jQuery's <a href="http://api.jquery.com/jquery.ajax/"><code>$.ajax</code></a><br />error handler and executed in <code>AjaxModal</code> object's context.</p>
+<h2>Partial views</h2>
+<p>All urls for ajaxModal have to return partial (just the content without<br /><code>&lt;html&gt;</code>, <code>&lt;body&gt;</code>, etc.) HTML.</p>
+<p>Your partial views should contains at least a <code>.modal-body</code> element encompassing<br />your content and optionally <code>.modal-footer</code>.</p>
+<p>For example:</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;http://submit-form-here&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;modal-body&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;email&quot;</span><span class="ot"> placeholder=</span><span class="st">&quot;E-mail&quot;</span><span class="ot"> class=</span><span class="st">&quot;form-control&quot;</span><span class="kw">/&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;modal-footer&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> class=</span><span class="st">&quot;btn btn-danger modal-close&quot;</span><span class="kw">&gt;</span>Cancel<span class="kw">&lt;/button&gt;</span>
+        <span class="kw">&lt;button</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> class=</span><span class="st">&quot;btn btn-primary modal-submit&quot;</span><span class="kw">&gt;</span>Submit<span class="kw">&lt;/button&gt;</span>
+    <span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/form&gt;</span></code></pre>
+<p>You can also include inline javascript in your views which will be executed as<br />soon as the view is loaded. It can easily interact with the rest of your site<br />in contrast to iframe.</p>
+<h2>Special classes in your partial HTML views</h2>
+<p>You can use special classes in your partial views.</p>
+<h3>.modal-submit</h3>
+<p>When element of this class is clicked than the closest parent form is<br />serialized and submitted to the form's <code>action</code> url or to the current url which<br />is displayed by the modal.</p>
+<p>It's best if you always specify the <code>action</code> attribute on the form because the<br />default behavior can cause problems in certain situations.</p>
+<p>The <em>current url</em> tracked by modal instance isn't updated when redirects occur.</p>
+<h3>.modal-follow</h3>
+<p>When element of this class is clicked then it's <code>href</code> url is followed by the<br />modal.</p>
+<h3>.modal-close</h3>
+<p>When clicked the modal is closed.</p>
+<h2>Events</h2>
+<p>You can trigger events on the <code>window</code> object which cause certain actions to be<br />performed.</p>
+<h3>ajaxmodal:close</h3>
+<p>When triggered the modal is closed, eg. <code>$(window).trigger('ajaxmodal:close');</code>.</p>
+<h3>ajaxmodal:follow</h3>
+<p>When triggered modal shows the specified url, eg.<br /><code>$(window).trigger('ajaxmodal:follow', ['url-of-the-view-to-be-shown']);</code></p>
+<h2>TODO</h2>
+<ul>
+<li>Honor the form's <code>method</code> attribute.</li>
+</ul>
+</body>
+</html>

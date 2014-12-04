@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>jQuery Plugins @ creativestyle</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/> 
+        <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="components/fontawesome/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="components/open-sans-fontface/open-sans.css">
+        <link rel="stylesheet" type="text/css" href="assets/styles.css">
+
+        <script src="components/jquery/dist/jquery.js"></script>
+        <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="components/bootbox/bootbox.js"></script>
+        <script src="components/google-code-prettify/src/prettify.js"></script>
+        <script src="components/google-code-prettify/src/lang-css.js"></script>
+        <script src="plugins/ajaxButton/ajaxButton.js"></script>
+        <script src="plugins/ajaxModal/ajaxModal.js"></script>
+        <script src="plugins/ajaxToggle/ajaxToggle.js"></script>
+        <script src="plugins/charCountdown/charCountdown.js"></script>
+        <script src="plugins/confirmize/confirmize.js"></script>
+        <script src="plugins/dropdownSelect/dropdownSelect.js"></script>
+        <script>
+            $(function() { 
+                function formatCode(code) {
+                    var lines = code.match(/[^\r\n]+/g),
+                        line,
+                        codelines = [],
+                        formatted = '',
+                        i,
+                        whitelen,
+                        minwhitelen = 5000;
+
+                    for(i = 0; i < lines.length; ++i) {
+                        line = lines[i];
+
+                        if(line.trim().length === 0) {
+                            continue;
+                        }
+
+                        whitelen = line.match(/^\s*/)[0].length;
+
+                        if(whitelen < minwhitelen) {
+                            minwhitelen = whitelen;
+                        }
+
+                        codelines.push(line);
+                    }
+
+                    for(i = 0; i < codelines.length; ++i) {
+                        line = codelines[i];                        
+
+                        formatted += line.slice(minwhitelen);
+
+                        if(i !== (codelines.length - 1)) {
+                            formatted += '\n';
+                        }
+                    }
+
+                    return formatted;
+                }
+
+                $('.example').each(function() {
+                    var $this = $(this),
+                        code = formatCode($this.find('.demo').html()),
+                        codeBox = $('<pre/>', {'class': 'code prettyprint lang-html'}).text(code);
+
+                    $this.append(codeBox);
+                });
+
+                prettyPrint();
+            });
+        </script>
+    </head>
+    <body data-spy="scroll" data-target=".nav-toc">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>                
+                    <a class="navbar-brand" href="#"><i class="fa fa-puzzle-piece"></i> jQuery Plugins / <strong>creativestyle</strong></a>
+                </div>
+                <!--<div class="collapse navbar-collapse nav-toc" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#intro">Introduction</a></li>
+                        <li><a href="#docs">Docs</a></li>
+                        <li><a href="#examples">Examples</a></li>                    
+                    </ul>
+                </div>-->
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <em>Some examples are not working yet because of the static nature of github pages. Please be patient...</em>
+                </div>
+                <div class="col-md-12">
+
+                    <h2>
+                        $.ajaxButton
+                        <small>allows a button to perform an asynchronous action</small>
+                        <a class="btn btn-info pull-right" href="docs/ajaxButton.html" target="_blank">
+                            <i class="fa fa-info-circle"></i>
+                            Docs
+                        </a>
+                    </h2>
+
+                    <section class="example">
+                        <div class="demo">
+                            <div class="form-group">
+                                <textarea id="ajaxButton-result1" class="form-control"></textarea>
+                            </div>
+                            <a href="https://api.github.com/zen" class="btn btn-danger" id="ajaxButton-btn1">
+                                <i class="glyphicon glyphicon-asterisk"></i>
+                                Go Zen
+                            </a>
+                            <a href="#" class="btn btn-warning" id="ajaxButton-reset1">
+                                <i class="fa fa-recycle"></i>
+                                Reset button
+                            </a>      
+                            <script>
+                                $('#ajaxButton-btn1').ajaxButton({
+                                    iconOkClass: 'fa fa-check',
+                                    okClass: 'btn btn-success disabled',
+                                    callback: function(response) {
+                                        $('#ajaxButton-result1').text(response);
+                                    }
+                                });
+
+                                $('#ajaxButton-reset1').click(function(e) { 
+                                    e.preventDefault();
+                                    $('#ajaxButton-btn1').trigger('ajaxButton:reset'); 
+                                });
+                            </script>
+                        </div>
+                    </section>
+
+                    <section class="example">
+                        <div class="demo">
+                            <a href="https://api.github.com/zen" class="btn btn-danger" id="ajaxButton-btn2">
+                                Optimize
+                            </a>
+                            <a href="#" class="btn btn-warning" id="ajaxButton-reset2">
+                                <i class="fa fa-recycle"></i>
+                                Reset button
+                            </a>     
+                            <script>
+                                $(function() {
+                                    $('#ajaxButton-btn2').ajaxButton({
+                                        okHtml: 'Optimized it!',
+                                        okClass: 'btn btn-info',
+                                        optimistic: true
+                                    });
+
+                                    $('#ajaxButton-reset2').click(function(e) { 
+                                        e.preventDefault();
+                                        $('#ajaxButton-btn2').trigger('ajaxButton:reset'); 
+                                    });           
+                                });                     
+                            </script>
+                        </div>
+                    </section>
+
+                    <h2>
+                        $.charCountdown
+                        <small>displays remaining characters in a form field</small>
+                        <a class="btn btn-info pull-right" href="docs/charCountdown.html" target="_blank">
+                            <i class="fa fa-info-circle"></i>
+                            Docs
+                        </a>
+                    </h2>
+
+                    <section class="example">
+                        <div class="demo">
+                            <div class="form" role="form">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" name="city" data-maxlength="30" id="charCountdown-input1"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" name="description" data-maxlength="50" id="charCountdown-input2"></textarea>
+                                </div>                                  
+                            </div>
+                            <script>
+                                $(function() {
+                                    $('#charCountdown-input1').charCountdown({
+                                        counterPattern: '# remaining', 
+                                        showNegative: false                                    
+                                    });
+
+                                    $('#charCountdown-input2').charCountdown();
+                                });
+                            </script>
+                            <style>
+                                .form-group {
+                                    position: relative;
+                                }
+
+                                .char-counter {
+                                    position: absolute;
+                                    right: 0;
+                                    padding: 0 2px 0 0;
+                                    top: 3px;
+                                    font-size: 13px;
+                                    font-weight: bold;
+                                    color: #5cb85c;
+                                }
+
+                                .char-counter.too-long {
+                                    color: #d9534f;
+                                }
+                            </style>
+                        </div>
+                    </section>
+
+                    <h2>
+                        $.confirmize
+                        <small>displays confirmation box for an action</small>
+                        <a class="btn btn-info pull-right" href="docs/confirmize.html" target="_blank">
+                            <i class="fa fa-info-circle"></i>
+                            Docs
+                        </a>
+                    </h2>
+
+                    <section class="example">
+                        <div class="demo">
+                            <a href="http://google.com" class="btn btn-danger btn-confirm" data-message="Google?">
+                                <i class="fa fa-globe"></i>
+                                Go to google
+                            </a>                            
+                            <a href="#" data-href="http://google.com" class="btn btn-info btn-confirm" data-message="Really?">
+                                <i class="fa fa-globe"></i>
+                                Be protected
+                            </a>                              
+                            <script>
+                                $(function() {
+                                    $('.btn-confirm').confirmize();
+                                });
+                            </script>                            
+                        </div>
+                    </section>
+
+                    <section class="example">
+                        <div class="demo">
+                            <form action="demo.html#examples" method="get" role="form">
+                                <div class="form-group">
+                                    <label for="inputEmail">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="E-mail">
+                                </div>  
+                                <button type="submit" class="btn btn-primary btn-confirm" data-message="Subscribe using button?">Submit</button>
+                                <input type="submit" class="btn btn-default btn-confirm" data-message="Subscribe using input?" value="Submit with input">
+                            </form>
+                            <script>
+                                $(function() {
+                                    $('.btn-confirm').confirmize();
+                                });
+                            </script>
+                        </div>
+                    </section>
+
+                    <h2>
+                        $.ajaxModal
+                        <small>displays partial views in popup using AJAX</small>
+                        <a class="btn btn-info pull-right" href="docs/ajaxModal.html" target="_blank">
+                            <i class="fa fa-info-circle"></i>
+                            Docs
+                        </a>
+                    </h2>
+
+                    <section class="example">
+                        <div class="demo">
+                            <a class="btn btn-success btn-modal" title="The Test" href="partials/popup.php">Open form</a>
+                            <script>
+                                $(function() {
+                                    $('.btn-modal').ajaxModal({
+                                        spinner: '<div class="modal-body text-center"><i class="fa fa-refresh fa-spin fa-5x"></i></div>',
+                                        params: {testParam: (new Date()) + ' sparta!'},
+                                        onError: function(jqXHR, textStatus, errorThrown) {
+                                            this.setContent('<div class="modal-body">' +
+                                                                '<div class="alert alert-danger">' + 
+                                                                    'Sorry, there was a fatal error: ' + 
+                                                                    '<strong>' + errorThrown + '</strong>' +
+                                                                '</div>' +
+                                                            '</div>');
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </section>
+
+                    <h2>
+                        $.ajaxToggle
+                        <small>creates a toggle button that does ajax calls</small>
+                        <a class="btn btn-info pull-right" href="docs/ajaxToggle.html" target="_blank">
+                            <i class="fa fa-info-circle"></i>
+                            Docs
+                        </a>
+                    </h2>
+
+                    <section class="example">
+                        <div class="demo">
+                            <button 
+                                class="btn btn-toggle btn-success" 
+                                data-state="on" 
+                                data-on="partials/delay.php?state=on"
+                                data-off="partials/delay.php?state=off"
+                            >
+                            </button>
+                            <script>
+                                $(function() {
+                                    $('.btn-toggle').ajaxToggle({
+                                        states: {
+                                            on: {
+                                                content: 'Feature is ON',
+                                                cls: 'btn-success'
+                                            },
+                                            off: {
+                                                content: 'Feature is OFF',
+                                                cls: 'btn-danger'
+                                            },
+                                            loading: {
+                                                content: '<i class="fa fa-spinner fa-spin"></i>',
+                                                cls: 'btn-default'
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </section>
+
+                    <h2>
+                        $.dropdownSelect
+                        <small>turns a bootstrap's dropdown into a select for javascript use</small>
+                        <a class="btn btn-info pull-right" href="docs/dropdownSelect.html" target="_blank">
+                            <i class="fa fa-info-circle"></i>
+                            Docs
+                        </a>
+                    </h2>
+
+                    <section class="example">
+                        <div class="demo">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-select" data-toggle="dropdown">
+                                            <span class="dropdown-label">Day</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="#" data-value="vday">Day</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-value="vmonth">Month</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-value="vyear">Year</a>
+                                            </li>
+                                        </ul>
+                                    </div>                      
+                                </div>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control disabled" id="dropdownSelect-input1" placeholder="You selected..."/>
+                                </div>
+                            </div>
+                            <script>
+                                $(function() {
+                                    $('.dropdown-select[data-toggle=dropdown]')
+                                        .dropdownSelect()
+                                        .on('change', function(ev, value, label) {
+                                            $('#dropdownSelect-input1').val(value + ' (label: ' + label + ')');
+                                        });
+                                });
+                            </script>
+                        </div>
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

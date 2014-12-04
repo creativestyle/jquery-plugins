@@ -1,0 +1,67 @@
+body {
+    position: relative;
+    font-family: 'Open Sans';
+}
+
+h2 {
+    font-weight: bold;
+}
+
+h3 {
+
+}  
+
+.example .demo {
+    border: 1px solid #ddd;
+    border-width: 1px 1px 0 1px;
+    padding: 15px;
+    padding: 40px 15px 15px 15px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+}
+
+.example pre.code {
+    border: 1px solid #ddd;
+    border-width: 0px 1px 1px 1px;
+    padding: 15px;
+    border-radius: 0 0 4px 4px;
+    border-top: 1px solid #ccc;
+    background: #f9f9f9;
+    position: relative;
+}
+
+.example .demo::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 5px 10px;
+    
+    color: #ccc;
+    content: "CODE";
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    border: 1px solid #ddd;
+    border-width: 0 1px 1px 0;
+    border-radius: 0 0 4px 0;
+
+    content: "EXAMPLE";
+}
+
+/* Pretty printing styles. Used with prettify.js. */
+
+pre .str, code .str { color: #c30; } /* string */
+pre .kwd, code .kwd { color: #069; } /* keyword */
+pre .com, code .com { color: #999; } /* comment */
+pre .typ, code .typ { color: #89bdff; } /* type */
+pre .lit, code .lit { color: #069; } /* literal */
+pre .pun, code .pun { color: inherit; } /* punctuation */
+pre .pln, code .pln { color: inherit; } /* plaintext */
+pre .tag, code .tag { color: #2f6f9f; } /* html/xml tag */
+pre .atn, code .atn { color: #4f9fcf; } /* html/xml attribute name */
+pre .atv, code .atv { color: #d44950; } /* html/xml attribute value */
+pre .dec, code .dec { color: #F60; } /* decimal */ 
+pre .dec, code .dec { color: #F60; } /* decimal */ 

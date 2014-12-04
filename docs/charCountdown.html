@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../assets/github.css">
+</head>
+<body>
+<h1>$.charCountdown</h1>
+<p><em>jQuery plugin for displaying remaining characters in a form field</em></p>
+<p>The only requirement is <strong>jQuery</strong>.</p>
+<h2>Usage</h2>
+<p>A div holding the counter with class <code>className</code> is inserted just before the<br />target element.</p>
+<p>If the target element has id then the attribute <code>data-for=&quot;element-id&quot;</code> is added<br />to the counter.</p>
+<p>Basic usage is:<br /><code>javascript $('your-input-selector').charCounter({     counterPattern: &quot;# remaining&quot; /* Not mandatory */ });</code></p>
+<h2>Parameters</h2>
+<h3>max</h3>
+<p><strong>Default</strong>: <code>null</code></p>
+<p>Max. number of chars allowed.</p>
+<p>Can be also specified using either <code>maxlength</code> or <code>data-maxlength</code> attr.</p>
+<p><em>Remember that it's usually nice to allow user to go over the limit, so he can<br />shorten his text later but validate server-side (kind of soft limit).</em></p>
+<h3>className</h3>
+<p><strong>Default</strong>: <code>'char-counter'</code></p>
+<p>Name of the class added to the counter holding div.</p>
+<h3>toolongClassName</h3>
+<p><strong>Default</strong>: <code>'too-long'</code></p>
+<p>Name of the class added to counter when user goes over the limit.</p>
+<h3>addTagClass</h3>
+<p><strong>Default</strong>: <code>true</code></p>
+<p>If true then a special class is added to the counter allowing you to identify<br />tag name of the element the counter is added too.</p>
+<p>The class name is constructed like this: <code>className + '-' + lowerCasedTagName</code>.</p>
+<p>Ex. if you add the counter to textarea then the counter will receive<br /><code>char-counter-textarea</code> class.</p>
+<h3>counterPattern</h3>
+<p><strong>Default</strong>: <code>null</code></p>
+<p>By default counter displays only numbers. If you set this option then the <code>#</code><br />symbol is replaced by the number of chars.</p>
+<h3>showNegative</h3>
+<p><strong>Default</strong>: <code>false</code></p>
+<p>If true then a negative number is shown when user goes over the limit, otherwise<br />0 is shown.</p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+    "name": "jQueryPluginsSite",
+    "version": "0.0.0",
+    "authors": [
+        "Filip Sobalski <filip.sobalski@creativestyle.pl>"
+    ],
+    "license": "MIT",
+    "private": true,                                                                                                                                                                                                 
+    "ignore": [                                                                                                                                                                                                      
+        "**/.*",                                                                                                                                                                                                     
+        "node_modules",                                                                                                                                                                                              
+        "components"
+    ],                                                                                                                                                                                                               
+    "dependencies": {                                                                                                                                                                                                
+        "jquery": "~2.1",                                                                                                                                                                                           
+        "bootstrap": "~3.1",
+        "fontawesome": "~4.1",
+        "modernizr": "~2.7",
+        "bootbox": "~4.2",
+        "google-code-prettify": "~1.0",
+        "open-sans-fontface": "~1.1"
+    }                                                                                                                                                                                                                
+}
