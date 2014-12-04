@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
@@ -30,10 +31,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <link rel="stylesheet" href="../assets/github.css">
 </head>
 <body>
-<h1>$.ajaxButton</h1>
+<h1 id="ajaxbutton">$.ajaxButton</h1>
 <p><em>jQuery plugin that allows a button to perform an asynchronous action and then<br />change state (label, icon)</em></p>
 <p>Requires only <strong>jQuery</strong>, works best with <strong>bootstrap</strong>.</p>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 <p>Basic usage is:</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">$</span>(<span class="st">&#39;.your-btn-class&#39;</span>).<span class="fu">ajaxButton</span>({
     <span class="dt">iconOkClass</span>: <span class="st">&#39;glyphicon glyphicon-ok&#39;</span>,
@@ -43,32 +44,32 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <p>If you specify <code>okHtml</code> then <code>iconOkClass</code> will be ignored.</p>
 <p>If want this to do sth useful then you should set <code>actionUrl</code> too. ;)</p>
 <p>The action can be performed only once - after that the button is locked. If you<br />need to reset it trigger ajaxButton:reset on the element.</p>
-<h2>Parameters</h2>
-<h3>iconSelector</h3>
+<h2 id="parameters">Parameters</h2>
+<h3 id="iconselector">iconSelector</h3>
 <p><strong>Default</strong>: <code>'i.glyphicon'</code></p>
 <p>If you already have an icon on the button and want to change it to sth else<br />(<code>iconOkClass</code>) on action then this is will be used to find the existing icon.</p>
-<h3>iconOkClass</h3>
+<h3 id="iconokclass">iconOkClass</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>If set then this is the class that will be given to the icon on action. If there<br />is no icon then an <code>&lt;i&gt;</code> element with this class will be appended.</p>
-<h3>okClass</h3>
+<h3 id="okclass">okClass</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>The button's class attribute is replaced with this on action.</p>
-<h3>okHtml</h3>
+<h3 id="okhtml">okHtml</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>If set then this is the contents of the button element will be replaced with<br />this on action. Also <code>iconOkClass</code> will be ignored.</p>
-<h3>actionUrl</h3>
+<h3 id="actionurl">actionUrl</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>Url of the ajax request to be performed. Can be also set using href and<br />data-href attributes.</p>
-<h3>data</h3>
+<h3 id="data">data</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>Additional data to be sent along with the request. It is directly passed to<br /><code>$.ajax</code>'s data option.</p>
-<h3>method</h3>
+<h3 id="method">method</h3>
 <p><strong>Default</strong>: <code>'GET'</code></p>
 <p>Request method. It is directly passed to <code>$.ajax</code>'s method option.</p>
-<h3>callback</h3>
+<h3 id="callback">callback</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>If set then this is called on action with the clicked with button's element as<br />this and response as the only argument. Response won't be available if<br />optimistic is set to true.</p>
-<h3>optimistic</h3>
+<h3 id="optimistic">optimistic</h3>
 <p><strong>Default</strong>: <code>false</code></p>
 <p>If set to true then the button will be changed as if the action succeeded<br />immediately and the request will run in background.</p>
 <p>By default the button changes state only after the request returns successfully.</p>

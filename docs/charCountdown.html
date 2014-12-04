@@ -3,42 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
   <link rel="stylesheet" href="../assets/github.css">
 </head>
 <body>
-<h1>$.charCountdown</h1>
+<h1 id="charcountdown">$.charCountdown</h1>
 <p><em>jQuery plugin for displaying remaining characters in a form field</em></p>
 <p>The only requirement is <strong>jQuery</strong>.</p>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 <p>A div holding the counter with class <code>className</code> is inserted just before the<br />target element.</p>
 <p>If the target element has id then the attribute <code>data-for=&quot;element-id&quot;</code> is added<br />to the counter.</p>
-<p>Basic usage is:<br /><code>javascript $('your-input-selector').charCounter({     counterPattern: &quot;# remaining&quot; /* Not mandatory */ });</code></p>
-<h2>Parameters</h2>
-<h3>max</h3>
+<p>Basic usage is:</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">$</span>(<span class="st">&#39;your-input-selector&#39;</span>).<span class="fu">charCounter</span>({
+    <span class="dt">counterPattern</span>: <span class="st">&quot;# remaining&quot;</span> <span class="co">/* Not mandatory */</span>
+});</code></pre>
+<h2 id="parameters">Parameters</h2>
+<h3 id="max">max</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>Max. number of chars allowed.</p>
 <p>Can be also specified using either <code>maxlength</code> or <code>data-maxlength</code> attr.</p>
 <p><em>Remember that it's usually nice to allow user to go over the limit, so he can<br />shorten his text later but validate server-side (kind of soft limit).</em></p>
-<h3>className</h3>
+<h3 id="classname">className</h3>
 <p><strong>Default</strong>: <code>'char-counter'</code></p>
 <p>Name of the class added to the counter holding div.</p>
-<h3>toolongClassName</h3>
+<h3 id="toolongclassname">toolongClassName</h3>
 <p><strong>Default</strong>: <code>'too-long'</code></p>
 <p>Name of the class added to counter when user goes over the limit.</p>
-<h3>addTagClass</h3>
+<h3 id="addtagclass">addTagClass</h3>
 <p><strong>Default</strong>: <code>true</code></p>
 <p>If true then a special class is added to the counter allowing you to identify<br />tag name of the element the counter is added too.</p>
 <p>The class name is constructed like this: <code>className + '-' + lowerCasedTagName</code>.</p>
 <p>Ex. if you add the counter to textarea then the counter will receive<br /><code>char-counter-textarea</code> class.</p>
-<h3>counterPattern</h3>
+<h3 id="counterpattern">counterPattern</h3>
 <p><strong>Default</strong>: <code>null</code></p>
 <p>By default counter displays only numbers. If you set this option then the <code>#</code><br />symbol is replaced by the number of chars.</p>
-<h3>showNegative</h3>
+<h3 id="shownegative">showNegative</h3>
 <p><strong>Default</strong>: <code>false</code></p>
 <p>If true then a negative number is shown when user goes over the limit, otherwise<br />0 is shown.</p>
 </body>

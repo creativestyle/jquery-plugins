@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
@@ -30,29 +31,29 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <link rel="stylesheet" href="../assets/github.css">
 </head>
 <body>
-<h1>$.confirmize</h1>
+<h1 id="confirmize">$.confirmize</h1>
 <p><em>jQuery plugin that displays confirmation box for an action link or when<br />submitting a form</em></p>
 <p>Requires <strong>jQuery</strong> and <strong>bootbox</strong>. Works best with <strong>bootstrap</strong>.</p>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 <p>Basic usage is:</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">$</span>(<span class="st">&#39;.your-class&#39;</span>).<span class="fu">confirmize</span>({
     <span class="dt">title</span>: <span class="st">&#39;Title&#39;</span>,
     <span class="dt">message</span>: <span class="st">&#39;Proceed?&#39;</span>
 });</code></pre>
 <p>The settings object and all params are optional.</p>
-<h2>Parameters</h2>
+<h2 id="parameters">Parameters</h2>
 <p>All parameters can be specified by using (in this order):</p>
 <ul>
-<li>data attribute - ex. <code>data-title=&quot;your title&quot;</code><br /></li>
-<li>jquery data() - ex. <code>$(element).data('title', 'your title')</code><br /></li>
+<li>data attribute - ex. <code>data-title=&quot;your title&quot;</code></li>
+<li>jquery data() - ex. <code>$(element).data('title', 'your title')</code></li>
 <li>by specifing it in the object passed to plugin initializer</li>
 </ul>
-<h3>title</h3>
+<h3 id="title">title</h3>
 <p><strong>Default:</strong> <code>'&lt;i class=&quot;fa fa-exclamation-triangle text-danger&quot;&gt;&lt;/i&gt; Confirm Action'</code></p>
 <p>Can be also specified in the title attribute on the element.</p>
-<h3>message</h3>
+<h3 id="message">message</h3>
 <p><strong>Default:</strong> <code>'Are you sure?'</code></p>
-<h3>href</h3>
+<h3 id="href">href</h3>
 <p>This parameter must be specified unless you're using a form.<br />Can be also specified in the href attribute on the element.</p>
 </body>
 </html>

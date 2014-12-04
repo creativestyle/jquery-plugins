@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <!--[if lt IE 9]>
@@ -30,11 +31,11 @@ code > span.er { color: #ff0000; font-weight: bold; }
   <link rel="stylesheet" href="../assets/github.css">
 </head>
 <body>
-<h1>$.dropdownSelect</h1>
+<h1 id="dropdownselect">$.dropdownSelect</h1>
 <p><em>turns a bootstrap's dropdown into a select for javascript use</em></p>
 <p>It is not meant for forms but rather asynchronous js features.</p>
 <p>Requires <strong>jQuery</strong> and <strong>bootstrap</strong>.</p>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 <p>Create a bootstrap <a href="http://getbootstrap.com/javascript/#dropdowns">dropdown</a><br />and extend it:</p>
 <pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="fu">$</span>(<span class="st">&#39;.dropdown-select[data-toggle=dropdown]&#39;</span>).<span class="fu">dropdownSelect</span>();</code></pre>
 <p>Each <code>li</code> element can have <code>data-value</code> attribute which indicates the selected<br />value.</p>
