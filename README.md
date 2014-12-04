@@ -1,4 +1,4 @@
-# A collection of jQueryPlugins
+# A collection of jQuery plugins
 
 Each plugin has a readme in it's own directory.
 
