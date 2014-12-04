@@ -1,6 +1,7 @@
 # A collection of jQuery plugins
 
 Each plugin has a readme in it's own directory.
+Check the [examples](http://creativestyle.github.io/jquery-plugins/) out.
 
 ## [ajaxButton](ajaxButton/README.md)
 
