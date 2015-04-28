@@ -109,7 +109,7 @@ var AjaxModal;
             this.showSpinner();
             this.url = url;
 
-            var data = this.settings.params,
+            var data = this.settings.params.slice(0), // clone the array
                 errorHandler = null;
 
             if($.isFunction(this.settings.onError)) {
