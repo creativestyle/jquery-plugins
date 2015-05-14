@@ -3,6 +3,8 @@
 Each plugin has a readme in it's own directory.
 Check the [examples](http://creativestyle.github.io/jquery-plugins/) out.
 
+**bower** - `bower install creativestyle-jquery-plugins`
+
 ## [ajaxButton](ajaxButton/README.md)
 
 Allows a button to perform an asynchronous action and then change state (label, icon).
